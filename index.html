@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester Mid Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            padding: 20px;
+            color: white;
+        }
+        .header {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
+            color: black;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff5733;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #c70039;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h2>Semester Mid Feedback</h2>
+        <H2>AY 2024-25 EVEN SEMESTER</H2>
+        <h2>Lecturer: Chidambaram V</h2>
+        <H3>Department of Mechanical Engineering</H3>
+        <h4>P.T.Lee Chengalvaraya Naicker Polytechnic College</h4>
+    </div>
+    <div class="container">
+        <form id="feedbackForm">
+            <label for="name">Student Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="register">Register Number:</label>
+            <input type="text" id="register" name="register" required>
+
+            <label for="year">Year:</label>
+            <select id="year" name="year" required>
+                <option value="II Year">II Year</option>
+                <option value="III Year">III Year</option>
+                <option value="IV Year">IV Year</option>
+            </select>
+
+            <label for="observed">Tell Me About Myself – What You Observed:</label>
+            <textarea id="observed" name="observed" rows="3" required></textarea>
+
+            <label for="positives">My Positives:</label>
+            <textarea id="positives" name="positives" rows="3" required></textarea>
+
+            <label for="negatives">Negatives:</label>
+            <textarea id="negatives" name="negatives" rows="3" required></textarea>
+
+            <label for="change">To Be Changed:</label>
+            <textarea id="change" name="change" rows="3" required></textarea>
+
+            <label for="teaching">Rating About My Teaching Method (1-10):</label>
+            <input type="number" id="teaching" name="teaching" min="1" max="10" required>
+
+            <label for="communication">Rating About My Communication (1-10):</label>
+            <input type="number" id="communication" name="communication" min="1" max="10" required>
+
+            <label for="treatment">Rating About Treating Students (1-10):</label>
+            <input type="number" id="treatment" name="treatment" min="1" max="10" required>
+
+            <label for="marks">Give Me Marks Out of 100:</label>
+            <input type="number" id="marks" name="marks" min="0" max="100" required>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+
+    fetch('https://script.google.com/macros/s/AKfycbwYkVkdG6whD2LIyVMu9v5qKjwqDTB6UaChz5WL7kobP-QLg1WwJcq2zIWt8VFt779Kew/exec', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert("Feedback submitted successfully!");
+        document.getElementById('feedbackForm').reset();
+    })
+    .catch(error => alert("Error submitting feedback: " + error.message));
+});
+
+    </script>
+</body>
+</html>
